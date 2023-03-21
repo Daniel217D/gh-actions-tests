@@ -12,4 +12,9 @@ class Main {
 	public function echo() {
 		echo $this->message . "\n";
 	}
+
+	public function __destruct()
+	{
+		echo 'Aaaand it\'s gone';
+	}
 }
