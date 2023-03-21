@@ -1,6 +1,7 @@
 {
     "name": "ddaniel/gh-releases",
     "description": "template for github releases with ci/cd",
+    "version": "1.0.0",
     "type": "project",
     "license": "MIT",
     "autoload": {
