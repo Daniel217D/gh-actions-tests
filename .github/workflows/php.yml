@@ -1,0 +1,30 @@
+name: PHP build
+run-name: ${{ github.actor }} is learning GitHub Actions
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict
+      
+    - name: Zip code
+      run: |
+        chmod +x ./bin/zip.sh
+        ./bin/zip.sh
+      shell: bash
+
+    
