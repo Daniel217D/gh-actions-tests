@@ -29,6 +29,7 @@ jobs:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: "latest"
         prerelease: false
+        draft: true
         title: "Development Build"
         files: |
           ./build/app.zip
