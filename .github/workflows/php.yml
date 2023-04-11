@@ -20,7 +20,16 @@ jobs:
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
-      
+
+    - name: Install composer dependencies
+      run: composer i
+
+    - name: Run phpcs
+      run:  |
+        chmod +x ./bin/phpcs.sh
+        ./bin/phpcs.sh
+      shell: bash
+
     - name: Zip code
       run: |
         chmod +x ./bin/zip.sh
