@@ -27,6 +27,16 @@ class Calculator {
 	}
 
 	/**
+	 * @param  float $a first term.
+	 * @param  float $b second term.
+	 *
+	 * @return float
+	 */
+	public function subtract( float $a, float $b ) : float {
+		return $a - $b;
+	}
+
+	/**
 	 * @return float|int
 	 */
 	public function get_memory() {
