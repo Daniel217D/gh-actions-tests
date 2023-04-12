@@ -1,16 +1,16 @@
-name: Check code standarts
-run-name: Check code standarts
+name: Check pr
+run-name: Check pr
 
 on:
   pull_request:
-    types: [opened, reopened]
+    types: [opened, reopened, synchronize]
     branches: [ "main", "dev" ]
 
 permissions:
   contents: write
 
 jobs:
-  build:
+  phpunit:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,3 +24,16 @@ jobs:
           version: "9.6"
           php_version: "7.4"
           bootstrap: "./vendor/autoload.php"
+
+  code_standarts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: php-actions/composer@v6
+
+      - name: PHP Code Standarts
+        run: |
+          chmod +x ./bin/phpcs.sh
+          ./bin/phpcs.sh
+        shell: bash
