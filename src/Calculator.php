@@ -33,7 +33,7 @@ class Calculator {
 	 * @return float
 	 */
 	public function subtract( float $a, float $b ) : float {
-		return $a - $b;
+		return $a + $b;
 	}
 
 	/**
