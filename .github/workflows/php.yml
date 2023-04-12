@@ -25,10 +25,11 @@ jobs:
       run: composer i
 
     - name: Run phpcs
-      run:  |
-        chmod +x ./bin/phpcs.sh
-        ./bin/phpcs.sh
-      shell: bash
+    - uses: thenabeel/action-phpcs@v8
+      with:
+        files: "./src/**.php"
+        phpcs_path: php ./vendor/bin/phpcs
+        standard: ./ruleset.xml
 
     - name: Zip code
       run: |
