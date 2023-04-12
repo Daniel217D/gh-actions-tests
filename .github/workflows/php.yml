@@ -21,8 +21,6 @@ jobs:
     
     - name: Install composer dependencies
       run: composer i
-    
-    - uses: "ergebnis/composer-root-version-action@main"
           
     - name: PHP Code Standarts
       run: |

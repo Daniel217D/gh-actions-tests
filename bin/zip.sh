@@ -34,6 +34,7 @@ mkdir -p "$BUILD_DIR"
 
 # Install composer no-dev dependencies.
 status "Installing composer no-dev dependencies... 📦"
+rm -rf "$DIR/vendor"
 composer install --optimize-autoloader --no-dev -q
 
 # Copy all files
