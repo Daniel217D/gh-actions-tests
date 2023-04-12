@@ -18,10 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: php-actions/composer@v6
-    
-    - name: Install composer dependencies
-      run: composer i
-          
+
     - name: PHP Code Standarts
       run: |
         chmod +x ./bin/phpcs.sh
