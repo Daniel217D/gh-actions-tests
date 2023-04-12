@@ -45,7 +45,7 @@ class CalculatorTest extends TestCase {
 	}
 
 	/**
-	 * Test $calculator->testAdding
+	 * @see Calculator::add()
 	 *
 	 * @param  float $a  first term.
 	 * @param  float $b  second term.
@@ -57,6 +57,36 @@ class CalculatorTest extends TestCase {
 		$this->assertEquals(
 			$c,
 			$this->calculator->add( $a, $b )
+		);
+	}
+
+	/**
+	 * Data to check subtract
+	 *
+	 * @return int[][]
+	 */
+	public function subtractProvider(): array {
+		return array(
+			array( 1, 2, -1 ),
+			array( -1, 2, -3 ),
+			array( 1, -2, 3 ),
+			array( -1, -2, 1 ),
+		);
+	}
+
+	/**
+	 * @see Calculator::subtract
+	 *
+	 * @param  float $a  first term.
+	 * @param  float $b  second term.
+	 * @param  float $c  result.
+	 *
+	 * @dataProvider subtractProvider
+	 */
+	public function testSubtracting( float $a, float $b, float $c ) {
+		$this->assertEquals(
+			$c,
+			$this->calculator->subtract( $a, $b )
 		);
 	}
 
