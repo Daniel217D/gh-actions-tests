@@ -91,6 +91,38 @@ class CalculatorTest extends TestCase {
 	}
 
 	/**
+	 * Data to check multiplication
+	 *
+	 * @return int[][]
+	 */
+	public function multiplicationProvider(): array {
+		return array(
+			array( 1, 2, 2 ),
+			array( -1, 2, -2 ),
+			array( 1, -2, -2 ),
+			array( -1, -2, 2 ),
+			array( 2, 2, 4 ),
+			array( -2, 2, -4 ),
+		);
+	}
+
+	/**
+	 * @see Calculator::multiply()
+	 *
+	 * @param  float $a  first term.
+	 * @param  float $b  second term.
+	 * @param  float $c  result.
+	 *
+	 * @dataProvider multiplicationProvider
+	 */
+	public function testMultiplication( float $a, float $b, float $c ) {
+		$this->assertEquals(
+			$c,
+			$this->calculator->multiply( $a, $b )
+		);
+	}
+
+	/**
 	 * Test $calculator->get_memory
 	 *
 	 * @param  float $a  first term.
