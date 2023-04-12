@@ -38,7 +38,7 @@ jobs:
 
     - name: Zip code
       run: |
-        chmod +x ./bin/zip.sh
+        chmod 777 ./bin/zip.sh
         ./bin/zip.sh
       shell: bash
       
