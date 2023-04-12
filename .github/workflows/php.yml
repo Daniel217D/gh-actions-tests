@@ -4,7 +4,9 @@ run-name: ${{ github.actor }} is learning GitHub Actions
 on:
   push:
     branches: [ "main" ]
-
+  pull_request:
+    branches: [ "main" ]
+    
 permissions:
   contents: write
 
@@ -36,7 +38,7 @@ jobs:
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "${{ env.COMPOSER_ROOT_VERSION }}"
+        automatic_release_tag: "latest"
         prerelease: false
         draft: false
         files: |
