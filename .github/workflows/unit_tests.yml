@@ -1,0 +1,26 @@
+name: Check code standarts
+run-name: Check code standarts
+
+on:
+  pull_request:
+    types: [opened, reopened]
+    branches: [ "main" ]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: php-actions/composer@v6
+
+      - name: PHPUnit tests
+        uses: php-actions/phpunit@v3
+        with:
+          configuration: "./phpunit.xml"
+          version: "9.6"
+          php_version: "7.4"
+          bootstrap: "./vendor/autoload.php"

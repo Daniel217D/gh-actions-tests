@@ -1,8 +1,8 @@
-name: PHP build
-run-name: ${{ github.actor }} is learning GitHub Actions
+name: Release
+run-name: Release
 
 on:
-  pull_request:
+  push:
     branches: [ "main" ]
     
 permissions:
@@ -15,21 +15,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: php-actions/composer@v6
-
-    - name: PHP Code Standarts
-      run: |
-        chmod +x ./bin/phpcs.sh
-        ./bin/phpcs.sh
-      shell: bash
-    
-    - name: PHPUnit tests
-      uses: php-actions/phpunit@v3
-      with:
-        configuration: "./phpunit.xml"
-        version: "9.6"
-        php_version: "7.4"
-        bootstrap: "./vendor/autoload.php"
 
     - name: Zip code
       run: |
