@@ -20,7 +20,9 @@ jobs:
 
     - name: Install composer dependencies
       run: composer i
-
+    
+    - uses: "ergebnis/composer-root-version-action@main"
+          
     - name: PHP Code Standarts
       run: |
         chmod +x ./bin/phpcs.sh
@@ -36,6 +38,7 @@ jobs:
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "$COMPOSER_ROOT_VERSION"
         prerelease: false
         draft: false
         files: |
