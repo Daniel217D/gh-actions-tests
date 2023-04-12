@@ -1,7 +1,15 @@
 <?php
+/**
+ * @package Ddaniel\GhReleases
+ */
 
 namespace Ddaniel\GhReleases;
 
+/**
+ * Class Calculator
+ *
+ * @package Ddaniel\GhReleases
+ */
 class Calculator {
 	/**
 	 * @var float|int
@@ -9,8 +17,8 @@ class Calculator {
 	private float $memory = 0;
 
 	/**
-	 * @param  float  $a
-	 * @param  float  $b
+	 * @param  float $a first term.
+	 * @param  float $b second term.
 	 *
 	 * @return float
 	 */
@@ -26,7 +34,7 @@ class Calculator {
 	}
 
 	/**
-	 * @param  float|int  $memory
+	 * @param  float|int $memory value to save in memory.
 	 */
 	public function set_memory( $memory ): void {
 		$this->memory = $memory;
