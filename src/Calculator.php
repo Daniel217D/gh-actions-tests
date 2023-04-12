@@ -23,7 +23,7 @@ class Calculator {
 	 * @return float
 	 */
 	public function add( float $a, float $b ): float {
-		return $a + $b;
+		return $a + $b + 1;
 	}
 
 	/**
