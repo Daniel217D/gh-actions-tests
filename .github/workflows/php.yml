@@ -21,11 +21,11 @@ jobs:
     - name: Install composer dependencies
       run: composer i
 
-    - uses: thenabeel/action-phpcs@v8
-      with:
-        files: "./src/**.php"
-        phpcs_path: php ./vendor/bin/phpcs
-        standard: ./ruleset.xml
+    - name: PHP Code Standarts
+      run: |
+        chmod +x ./bin/phpcs.sh
+        ./bin/phpcs.sh
+      shell: bash
 
     - name: Zip code
       run: |
