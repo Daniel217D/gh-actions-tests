@@ -27,7 +27,6 @@ jobs:
       
     - name: "Test variable"
       run: |
-        echo "COMPOSER_ROOT_VERSION"
         echo "${COMPOSER_ROOT_VERSION}"
         echo "${{COMPOSER_ROOT_VERSION}}"
         echo ${COMPOSER_ROOT_VERSION}
