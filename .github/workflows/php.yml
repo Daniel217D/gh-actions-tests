@@ -24,7 +24,6 @@ jobs:
     - name: Install composer dependencies
       run: composer i
 
-    - name: Run phpcs
     - uses: thenabeel/action-phpcs@v8
       with:
         files: "./src/**.php"
