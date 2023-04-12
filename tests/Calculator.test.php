@@ -75,12 +75,7 @@ class CalculatorTest extends TestCase {
 	}
 
 	/**
-	 * @see Calculator::subtract
-	 *
-	 * @param  float $a  first term.
-	 * @param  float $b  second term.
-	 * @param  float $c  result.
-	 *
+
 	 * @dataProvider subtractProvider
 	 */
 	public function testSubtracting( float $a, float $b, float $c ) {
