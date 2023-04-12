@@ -4,8 +4,8 @@ run-name: ${{ github.actor }} is learning GitHub Actions
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    tags:
+      - "v*"
 
 permissions:
   contents: write
@@ -38,8 +38,7 @@ jobs:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: "latest"
         prerelease: false
-        draft: true
-        title: "Development Build"
+        draft: false
         files: |
           ./build/app.zip
     
