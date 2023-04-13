@@ -21,13 +21,19 @@ jobs:
         chmod 777 ./bin/zip.sh
         sudo bash ./bin/zip.sh
       shell: bash
+
+    - name: "Set COMPOSER_ROOT_VERSION environment variable"
+      uses: "ergebnis/composer-root-version-action@main"
       
-    - uses: "marvinpinto/action-automatic-releases@latest"
+    - name: "Test variable"
+      run: |
+        echo "blalbalbalbalba"
+        
+    - uses: actions/checkout@v3
+    - uses: ncipollo/release-action@v1
       with:
-        repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "latest"
-        prerelease: false
-        draft: true
-        files: |
-          ./build/app.zip
+        artifactErrorsFailBuild: true,
+        artifacts: "./build/app.zip"
+        tag: "${COMPOSER_ROOT_VERSION}"
+
     
