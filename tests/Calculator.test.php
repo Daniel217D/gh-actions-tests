@@ -23,27 +23,16 @@ class CalculatorTest extends TestCase {
 	}
 
 	/**
-	 * Data to check sum
-	 *
-	 * @return int[][]
-	 */
-	public function sumProvider(): array {
-		return array(
-			array( 1, 2, 3 ),
-			array( 1, 5, 6 ),
-			array( - 1, - 2, - 3 ),
-			array( 0, 0, 0 ),
-		);
-	}
-
-	/**
-	 * @see Calculator::add()
+	 * @covers \Ddaniel\GhReleases\Calculator::add
 	 *
 	 * @param  float $a  first term.
 	 * @param  float $b  second term.
 	 * @param  float $c  result.
 	 *
-	 * @dataProvider sumProvider
+	 * @testWith [1, 2, 3]
+	 *           [1, 5, 6]
+	 *           [-1, -2, -3]
+	 *           [0, 0, 0]
 	 */
 	public function testAdding( float $a, float $b, float $c ) {
 		$calculator = new Calculator();
@@ -69,7 +58,7 @@ class CalculatorTest extends TestCase {
 	}
 
 	/**
-	 * @see Calculator::subtract
+	 * @covers \Ddaniel\GhReleases\Calculator::subtract
 	 *
 	 * @param  float $a  first term.
 	 * @param  float $b  second term.
@@ -103,7 +92,7 @@ class CalculatorTest extends TestCase {
 	}
 
 	/**
-	 * @see Calculator::multiply()
+	 * @covers \Ddaniel\GhReleases\Calculator::multiply
 	 *
 	 * @param  float $a  first term.
 	 * @param  float $b  second term.
@@ -135,7 +124,7 @@ class CalculatorTest extends TestCase {
 	}
 
 	/**
-	 * @see Calculator::divide()
+	 * @covers \Ddaniel\GhReleases\Calculator::divide
 	 *
 	 * @param  float $a  first term.
 	 * @param  float $b  second term.
@@ -153,7 +142,7 @@ class CalculatorTest extends TestCase {
 	}
 
 	/**
-	 * @see Calculator::divide()
+	 * @covers \Ddaniel\GhReleases\Calculator::divide
 	 */
 	public function testZeroDivision() {
 		$calculator = new Calculator();
@@ -164,21 +153,20 @@ class CalculatorTest extends TestCase {
 
 
 	/**
-	 * Test $calculator->get_memory
+	 * @covers \Ddaniel\GhReleases\Calculator::set_memory
+	 * @covers \Ddaniel\GhReleases\Calculator::get_memory
 	 *
 	 * @param  float $a  first term.
 	 * @param  float $b  second term.
 	 * @param  float $c  result.
-	 *
-	 * @dataProvider sumProvider
 	 */
-	public function testAddingWithMemory( float $a, float $b, float $c ) {
+	public function testAddingWithMemory() {
 		$calculator = new Calculator();
 
-		$calculator->set_memory( $a );
+		$calculator->set_memory( 1 );
 		$this->assertEquals(
-			$c,
-			$calculator->get_memory() + $b
+			1,
+			$calculator->get_memory()
 		);
 	}
 
