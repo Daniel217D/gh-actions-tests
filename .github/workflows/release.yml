@@ -1,9 +1,11 @@
 name: Release
 run-name: Release
 
-on:
+on: 
   push:
     branches: [ "main" ]
+    tags:
+    - 'v*'
     
 permissions:
   contents: write
@@ -18,22 +20,14 @@ jobs:
 
     - name: Zip code
       run: |
+        echo "zip it x2"
         chmod 777 ./bin/zip.sh
         sudo bash ./bin/zip.sh
       shell: bash
-
-    - name: "Set COMPOSER_ROOT_VERSION environment variable"
-      uses: "ergebnis/composer-root-version-action@main"
       
-    - name: "Test variable"
-      run: |
-        echo "blalbalbalbalba"
-        
-    - uses: actions/checkout@v3
     - uses: ncipollo/release-action@v1
       with:
         artifactErrorsFailBuild: true,
         artifacts: "./build/app.zip"
-        tag: "${COMPOSER_ROOT_VERSION}"
 
     
