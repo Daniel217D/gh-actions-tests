@@ -11,17 +11,9 @@ use PHPUnit\Framework\TestCase;
  */
 class CalculatorTest extends TestCase {
 	/**
-	 * Calculator instance to test
-	 *
-	 * @var Calculator
-	 */
-	private Calculator $calculator;
-
-	/**
 	 * This method is called before each test.
 	 */
 	protected function setUp(): void {
-		$this->calculator = new Calculator();
 	}
 
 	/**
@@ -54,9 +46,11 @@ class CalculatorTest extends TestCase {
 	 * @dataProvider sumProvider
 	 */
 	public function testAdding( float $a, float $b, float $c ) {
+		$calculator = new Calculator();
+
 		$this->assertEquals(
 			$c,
-			$this->calculator->add( $a, $b )
+			$calculator->add( $a, $b )
 		);
 	}
 
@@ -84,9 +78,11 @@ class CalculatorTest extends TestCase {
 	 * @dataProvider subtractProvider
 	 */
 	public function testSubtracting( float $a, float $b, float $c ) {
+		$calculator = new Calculator();
+
 		$this->assertEquals(
 			$c,
-			$this->calculator->subtract( $a, $b )
+			$calculator->subtract( $a, $b )
 		);
 	}
 
@@ -116,9 +112,11 @@ class CalculatorTest extends TestCase {
 	 * @dataProvider multiplicationProvider
 	 */
 	public function testMultiplication( float $a, float $b, float $c ) {
+		$calculator = new Calculator();
+
 		$this->assertEquals(
 			$c,
-			$this->calculator->multiply( $a, $b )
+			$calculator->multiply( $a, $b )
 		);
 	}
 
@@ -129,12 +127,10 @@ class CalculatorTest extends TestCase {
 	 */
 	public function divisionProvider(): array {
 		return array(
-			array( 4, 2, 2 ),
-			array( 5, 2, 2.5 ),
-			array( -1, -2, 0.5 ),
-			array( 0, 2, 0 ),
-			array( 2, 0, 0 ),
-			array( 3, -0, 0 ),
+			'4/2=2'     => array( 4, 2, 2 ),
+			'5/2=2.5'   => array( 5, 2, 2.5 ),
+			'-1/-2=0.5' => array( -1, -2, 0.5 ),
+			'0/2=0'     => array( 0, 2, 0 ),
 		);
 	}
 
@@ -148,16 +144,24 @@ class CalculatorTest extends TestCase {
 	 * @dataProvider divisionProvider
 	 */
 	public function testDivision( float $a, float $b, float $c ) {
-		if ( .0 === $b ) {
-			$this->expectExceptionMessage( 'Division by zero' );
-			$this->calculator->divide( $a, $b );
-		} else {
-			$this->assertEquals(
-				$c,
-				$this->calculator->divide( $a, $b )
-			);
-		}
+		$calculator = new Calculator();
+
+		$this->assertEquals(
+			$c,
+			$calculator->divide( $a, $b )
+		);
 	}
+
+	/**
+	 * @see Calculator::divide()
+	 */
+	public function testZeroDivision() {
+		$calculator = new Calculator();
+
+		 $this->expectExceptionMessage( 'Division by zero' );
+		 $calculator->divide( 1, 0 );
+	}
+
 
 	/**
 	 * Test $calculator->get_memory
@@ -169,10 +173,12 @@ class CalculatorTest extends TestCase {
 	 * @dataProvider sumProvider
 	 */
 	public function testAddingWithMemory( float $a, float $b, float $c ) {
-		$this->calculator->set_memory( $a );
+		$calculator = new Calculator();
+
+		$calculator->set_memory( $a );
 		$this->assertEquals(
 			$c,
-			$this->calculator->get_memory() + $b
+			$calculator->get_memory() + $b
 		);
 	}
 
