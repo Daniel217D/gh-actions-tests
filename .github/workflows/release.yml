@@ -18,7 +18,7 @@ jobs:
 
     - name: Zip code
       run: |
-        echo "zip it"
+        echo "zip it x2"
         chmod 777 ./bin/zip.sh
         sudo bash ./bin/zip.sh
       shell: bash
