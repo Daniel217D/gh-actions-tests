@@ -5,6 +5,8 @@
 
 namespace Ddaniel\GhReleases;
 
+use Exception;
+
 /**
  * Class Calculator
  *
@@ -44,6 +46,21 @@ class Calculator {
 	 */
 	public function multiply( float $a, float $b ) : float {
 		return $a * $b;
+	}
+
+	/**
+	 * @param  float $a  first term.
+	 * @param  float $b  second term.
+	 *
+	 * @return float
+	 * @throws Exception If $b is zero.
+	 */
+	public function divide( float $a, float $b ) : float {
+		if ( .0 === $b ) {
+			throw new Exception( 'Division by zero' );
+		}
+
+		return $a / $b;
 	}
 
 	/**

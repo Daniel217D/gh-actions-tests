@@ -123,6 +123,43 @@ class CalculatorTest extends TestCase {
 	}
 
 	/**
+	 * Data to check division
+	 *
+	 * @return int[][]
+	 */
+	public function divisionProvider(): array {
+		return array(
+			array( 4, 2, 2 ),
+			array( 5, 2, 2.5 ),
+			array( -1, -2, 0.5 ),
+			array( 0, 2, 0 ),
+			array( 2, 0, 0 ),
+			array( 3, -0, 0 ),
+		);
+	}
+
+	/**
+	 * @see Calculator::divide()
+	 *
+	 * @param  float $a  first term.
+	 * @param  float $b  second term.
+	 * @param  float $c  result.
+	 *
+	 * @dataProvider divisionProvider
+	 */
+	public function testDivision( float $a, float $b, float $c ) {
+		if ( .0 === $b ) {
+			$this->expectExceptionMessage( 'Division by zero' );
+			$this->calculator->divide( $a, $b );
+		} else {
+			$this->assertEquals(
+				$c,
+				$this->calculator->divide( $a, $b )
+			);
+		}
+	}
+
+	/**
 	 * Test $calculator->get_memory
 	 *
 	 * @param  float $a  first term.
