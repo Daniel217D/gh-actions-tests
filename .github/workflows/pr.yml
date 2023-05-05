@@ -27,7 +27,9 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('./composer.json') }}
           restore-keys: |
             ${{ runner.os }}-composer-
-    
+      
+      - uses: php-actions/composer@v6
+      
       - name: PHPUnit tests
         uses: php-actions/phpunit@v3
         with:
